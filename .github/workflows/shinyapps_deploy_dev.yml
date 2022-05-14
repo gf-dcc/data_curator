@@ -6,7 +6,7 @@ name: shiny-deploy-dev
 on:
   push:
     branches:
-      - GF-data-curator-dev
+      - gf-dev
     paths-ignore:
       - '.github/ISSUE_TEMPLATE/**'
       - '**/*.md'
@@ -82,7 +82,7 @@ jobs:
       - name: Authorize and deploy app
         shell: Rscript {0}
         run: |
-          appName <- "GF-data-curator-dev"
+          appName <- "gf-data-curator-dev"
           
           rsConnectUser <- "${{ secrets.RSCONNECT_USER }}"
           rsConnectToken <- "${{ secrets.RSCONNECT_TOKEN }}"
