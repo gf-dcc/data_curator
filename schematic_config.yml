@@ -5,9 +5,9 @@
 
 # Do not change the 'definitions' section unless you know what you're doing
 definitions:
-  # synapse_config: '.synapseConfig'
-  creds_path: 'client_secret.json' # google oauth client
-  token_pickle: 'token.pickle'
+  synapse_config: '.synapseConfig'
+  # creds_path: 'client_secret.json' # for google oauth client
+  # token_pickle: 'token.pickle' # for google oauth client
   service_acct_creds: 'schematic_service.json' # google service key
 
 synapse:
