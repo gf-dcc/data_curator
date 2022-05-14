@@ -2,7 +2,8 @@
   "manifest_schemas": [
       {"display_name": "Imaging Level 2", "schema_name": "ImagingLevel2", "type": "assay"},
       {"display_name": "Core Clinical Data", "schema_name": "ClinicalCore", "type": "clinical"},
-      {"display_name": "Breast Cancer Clinical Data", "schema_name": "BreastCancerTier3", "type": "clinical"}
+      {"display_name": "Breast Cancer Clinical Data", "schema_name": "BreastCancerTier3", "type": "clinical"},
+      {"display_name": "Ovarian Cancer Clinical Data", "schema_name": "OvarianCancerTier3", "type": "clinical"}
   ],
   "community": "GF",
   "schema": "v1.0",
