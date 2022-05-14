@@ -15,7 +15,7 @@ ui <- shinydashboardPlus::dashboardPage(
     titleWidth = 250,
     title = tagList(
       span(class = "logo-lg", "Data Curator"),
-      span(class = "logo-mini", "DCA")
+      span(class = "logo-mini", "DCA") #
     ),
     leftUi = tagList(
       dropdownBlock(
@@ -39,13 +39,13 @@ ui <- shinydashboardPlus::dashboardPage(
       )
     ),
     tags$li(
-      class = "dropdown", id = "HTAN_logo",
+      class = "dropdown", id = "GF_logo",
       tags$a(
-        href = "https://humantumoratlas.org/",
+        href = "#",
         target = "_blank",
         tags$img(
-          height = "40px", alt = "HTAN LOGO",
-          src = "img/HTAN_text_logo.png"
+          height = "40px", alt = "GF LOGO",
+          src = "img/GF_logo.png"
         )
       )
     )
@@ -79,7 +79,7 @@ ui <- shinydashboardPlus::dashboardPage(
       tags$a(
         id = "sidebar_footer", `data-toggle` = "tab",
         tags$div(icon("heart")),
-        tags$footer(HTML('Supported by the Human Tumor Atlas Network <br/>
+        tags$footer(HTML('Created with funding from <br/>
                   (U24-CA233243-01)<br/>
                   Powered by <i class="far fa-heart"></i> and Sage Bionetworks'))
       )
