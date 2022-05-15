@@ -9,12 +9,14 @@ on:
       source:
         description: 'URL of new source'     
         required: true
-      
+
+env:
+  SOURCE_URL: ${{ github.event.inputs.source }}
+
 jobs:
   update-model:
     runs-on: ubuntu-latest
-    env:
-      SOURCE_URL: ${{ github.event.inputs.source }}
+    
     steps:
       # Check out development branch under $GITHUB_WORKSPACE
       - uses: actions/checkout@v3
