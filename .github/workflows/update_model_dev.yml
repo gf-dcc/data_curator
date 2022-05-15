@@ -1,4 +1,4 @@
-name: Update source model for dev app
+name: Update source model for dev
 
 # This will create a commit in the approppriate `develop` branch to update the 
 # model download_url in `schematic_config.yml` to point to new source release.
@@ -37,12 +37,12 @@ jobs:
         
       - name: Commit files
         run: |
-          git config user.email "github-actions@github.com"
-          git config user.name "github-actions"
+          git config user.email "105575623+gf-dcc-bot@users.noreply.github.com"
+          git config user.name "gf-dcc-bot"
           git commit -m "Update model source in config" -a
     
       - name: Push changes
         uses: ad-m/github-push-action@master
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.REPO_PAT }}
           branch: ${{ github.ref }}
