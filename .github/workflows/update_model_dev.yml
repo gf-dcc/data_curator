@@ -1,7 +1,7 @@
 name: Update source model for dev
 
-# This will create a commit in the approppriate `develop` branch to update the 
-# model download_url in `schematic_config.yml` to point to new source release.
+# Update model download_url in `schematic_config.yml`
+# to point to new source URL in appropriate `develop` branch.
 on:
   # Note: can also run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -22,6 +22,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           ref: gf-dev
+          token: ${{ secrets.REPO_PAT }}
           
       # The check steps matter more for rare occasions of manual input
       # vs. programmatic dispatch triggers
