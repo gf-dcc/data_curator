@@ -6,16 +6,12 @@
 # Do not change the 'definitions' section unless you know what you're doing
 definitions:
   synapse_config: '.synapseConfig'
-  # creds_path: 'client_secret.json' # for google oauth client
-  # token_pickle: 'token.pickle' # for google oauth client
+  creds_path: 'credentials.json' # google oauth client
+  token_pickle: 'token.pickle' # google oauth client
   service_acct_creds: 'schematic_service.json' # google service key
-
-synapse:
-  master_fileview: 'syn28142805' # syn16858331 fileview of project with datasets on Synapse
   manifest_basename: 'synapse_storage_manifest'
   manifest_folder: 'manifests' # manifests will be downloaded to this folder
-  # token_creds: 'syn28152053' # syn23643259synapse ID of credentials.json file
-  # service_acct_creds: 'syn25171627' # synapse ID of service_account_creds.json file
+  # token_creds: 'syn28152053' # syn23643259 synapse ID of credentials.json file
 
 manifest:
   # if making many manifests, just include name prefix
@@ -38,6 +34,7 @@ manifest:
 model:
   input:
     download_url: 'https://raw.githubusercontent.com/gf-dcc/data-model/main/GF.jsonld'
+    repo: 'gf-dcc/data-models'
     location: 'data-models/GF.jsonld'
     file_type: 'local'
 
