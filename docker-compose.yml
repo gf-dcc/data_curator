@@ -1,0 +1,42 @@
+services:
+  app:
+    image: gf-dcc/data_curator_host
+    ports:
+      - "8080:8080"
+    command: ["R", "--vanilla", "-e", "shiny::runApp('/home/app', port=8080, host='0.0.0.0')"] 
+    configs:
+      - source: schematic_config
+        target: /home/app/schematic_config.yml
+      - source: synapse_config
+        target: /home/app/.synapseConfig
+      - source: service_account_config
+        target: /home/app/schematic_service.json
+      - source: oauth_config
+        target: /home/app/oauth_config.yml
+      - source: oauth_creds
+        target: /home/app/credentials.json
+      - source: token
+        target: /home/app/token.pickle
+      - source: model_config
+        target: /home/app/data-models/GF.jsonld
+      - source: manifest_config
+        target: /home/app/www/config.json
+
+configs: 
+  schematic_config:
+    file: ./schematic_config.yml
+  synapse_config:
+    file: ./.synapseConfig
+  service_account_config:
+    file: ./schematic_service.json
+  oauth_config:
+    file: ./oauth_config.yml
+  oauth_creds: 
+    file: ./credentials.json
+  token: 
+    file: ./token.pickle
+  model_config: 
+    file: ./data-models/GF.jsonld
+  manifest_config: 
+    file: ./www/config.json
+      
