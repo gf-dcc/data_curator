@@ -9,13 +9,16 @@ definitions:
   creds_path: 'credentials.json' # google oauth client
   token_pickle: 'token.pickle' # google oauth client
   service_acct_creds: 'schematic_service.json' # google service key
+  # token_creds: 'syn28152053' # syn23643259 synapse ID of credentials.json file
+
+synapse:
+  master_fileview: 'syn28142805'
   manifest_basename: 'synapse_storage_manifest'
   manifest_folder: 'manifests' # manifests will be downloaded to this folder
-  # token_creds: 'syn28152053' # syn23643259 synapse ID of credentials.json file
 
 manifest:
   # if making many manifests, just include name prefix
-  title: 'GF'  
+  title: 'GF Manifest'  
   data_type:
     - 'GF'
   # - title: Core Clinical Data
