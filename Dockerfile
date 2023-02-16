@@ -28,6 +28,8 @@ RUN sudo apt-get update && sudo apt-get install -y \
     curl \
     libcurl4-openssl-dev \
     git \
+    libxml2 \
+    libglpk-dev \
     libbz2-dev \
     libffi-dev \
     libgdbm-dev \
