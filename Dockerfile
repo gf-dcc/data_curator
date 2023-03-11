@@ -5,7 +5,7 @@ ARG USER_UID=1001
 ARG USER_GID=1000
 
 ARG SCHEMATIC_VERSION=23.1.1
-ARG PYTHON_VERSION=3.10.8
+ARG PYTHON_VERSION=3.9.13
 ARG PYTHON_MAJOR=3
 
 LABEL schematic="v$SCHEMATIC_VERSION"
@@ -61,7 +61,7 @@ RUN sudo curl -O https://bootstrap.pypa.io/get-pip.py &&\
 RUN sudo chown shiny:1000 -R /home/app
 
 RUN /opt/python/$PYTHON_VERSION/bin/python$PYTHON_MAJOR -m venv .venv &&\
-    . .venv/bin/activate && python3 -m pip install schematicpy==$SCHEMATIC_VERSION && \
+    . .venv/bin/activate && pip install schematicpy==$SCHEMATIC_VERSION && \
     zip -r .venv.zip .venv && \
     sudo rm -rf .venv
 
