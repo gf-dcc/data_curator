@@ -5,11 +5,9 @@ ARG USER_UID=1001
 ARG USER_GID=1000
 
 ARG SCHEMATIC_VERSION=23.1.1
-ARG PYTHON_VERSION=3.9.13
-ARG PYTHON_MAJOR=3
 
 LABEL schematic="v$SCHEMATIC_VERSION"
-LABEL python="$PYTHON_VERSION"
+LABEL python="3.8"
 
 # Create the user
 RUN useradd --uid $USER_UID --gid $USER_GID -m $USERNAME \
@@ -36,31 +34,16 @@ RUN sudo apt-get update && sudo apt-get install -y \
     libsqlite3-dev \
     libssl-dev \
     zlib1g-dev \
+    python3.8 \
+    python3.8-venv \
+    python3.8-dev \
+    pip \
     && sudo rm -rf /var/lib/apt/lists/*
-
-# build python from source
-RUN sudo curl -O https://www.python.org/ftp/python/$PYTHON_VERSION/Python-$PYTHON_VERSION.tgz &&\
-    sudo tar -xvzf Python-$PYTHON_VERSION.tgz &&\
-    cd Python-$PYTHON_VERSION &&\
-    sudo ./configure \
-    --prefix=/opt/python/$PYTHON_VERSION \
-    --enable-shared \
-    --enable-optimizations \
-    --enable-ipv6 \
-    LDFLAGS=-Wl,-rpath=/opt/python/$PYTHON_VERSION/lib,--disable-new-dtags &&\
-    sudo make &&\
-    sudo make install &&\
-    echo Installed /opt/python/$PYTHON_VERSION/bin/python$PYTHON_MAJOR --version
-
-# install pip and clean up python build intermediates
-RUN sudo curl -O https://bootstrap.pypa.io/get-pip.py &&\
-    sudo /opt/python/$PYTHON_VERSION/bin/python$PYTHON_MAJOR get-pip.py &&\
-    sudo rm -Rf Python-$PYTHON_VERSION Python-$PYTHON_VERSION.tgz get-pip.py
 
 # set up app user/group, app assets
 RUN sudo chown shiny:1000 -R /home/app
 
-RUN /opt/python/$PYTHON_VERSION/bin/python$PYTHON_MAJOR -m venv .venv &&\
+RUN python3.8 -m venv .venv &&\
     . .venv/bin/activate && pip install schematicpy==$SCHEMATIC_VERSION && \
     zip -r .venv.zip .venv && \
     sudo rm -rf .venv
