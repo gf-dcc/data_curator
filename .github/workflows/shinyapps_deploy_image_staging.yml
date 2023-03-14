@@ -31,7 +31,7 @@ jobs:
           mkdir data-models
           curl https://raw.githubusercontent.com/gf-dcc/data-model/main/GF.jsonld > data-models/GF.jsonld
           curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY/staging/schematic_config.yml > schematic_config.yml
-          sudo chmod 777 www
+          sudo chmod -R 777 www
           curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY/staging/www/config.json > www/config.json
           echo ${{ secrets.SYNAPSE_CONFIG }} > .synapseConfig
           echo "${{ secrets.SCHEMATIC_SERVICE_ACCT_CREDS }}" > schematic_service_account_creds.json
@@ -58,5 +58,6 @@ jobs:
             writeLines(config, configFileConn),
             finally=close(configFileConn)
           )
+
           rsconnect::setAccountInfo(rsConnectUser, rsConnectToken, rsConnectSecret)
           rsconnect::deployApp(appName = appName)
