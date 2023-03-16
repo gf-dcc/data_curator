@@ -34,7 +34,7 @@ jobs:
           sudo chmod -R 777 www
           curl https://raw.githubusercontent.com/$GITHUB_REPOSITORY/staging/www/config.json > www/config.json
           echo ${{ secrets.SYNAPSE_CONFIG }} > .synapseConfig
-          echo "${{ secrets.SCHEMATIC_SERVICE_ACCT_CREDS }}" > schematic_service_account_creds.json
+          echo "${{ secrets.SCHEMATIC_SERVICE_ACCT_CREDS }}" | base64 --decode > schematic_service_account_creds.json
           echo ---- App assets to be bundled for deployment ----
           ls -a
 
