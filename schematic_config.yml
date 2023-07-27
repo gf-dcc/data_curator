@@ -26,7 +26,7 @@ manifest:
 model:
   input:
     # if both 'download_url' and 'repo' present, `repo` will be used
-    download_url: 'https://raw.githubusercontent.com/gf-dcc/data-model/v1.1.0-rc/GF.jsonld' # url to download JSON-LD data model
+    download_url: 'https://raw.githubusercontent.com/gf-dcc/data-model/main/GF.jsonld' # url to download JSON-LD data model
     # repo: 'gf-dcc/data-model' # data model repo url (<repo-owner>/<repo-name>/<version/branch>), version or branch is optional
     location: 'data-models/GF.jsonld' # path to JSON-LD file
     file_type: 'local'
