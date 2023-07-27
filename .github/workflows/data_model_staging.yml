@@ -1,0 +1,51 @@
+name: Data model staging
+
+# When a new data model version is released, update the download_url in `schematic_config.yml` so we can see/test changes in the `staging` deployment. 
+
+on:
+  # Note: this allows running this workflow manually from the Actions tab
+  workflow_dispatch:
+    inputs:
+      source:
+        description: 'URL of new source'     
+        required: true
+
+env:
+  SOURCE_URL: ${{ github.event.inputs.source }}
+
+jobs:
+  update-model:
+    runs-on: ubuntu-20.04
+
+    steps:
+      # Check out staging branch under $GITHUB_WORKSPACE
+      - uses: actions/checkout@v3
+        with:
+          ref: staging
+          persist-credentials: false
+          
+      # Check steps matter more for rare occasions of manual input
+      # vs. programmatic dispatches
+      - name: Check that source link works
+        run: wget $SOURCE_URL -O model.json
+
+      # Check format as can be easy to not grab the actual raw.github URL
+      - name: Check is JSON
+        run: cat model.json | python -m simplejson.tool > validated.json
+        
+      - name: Update config
+        uses: mikefarah/yq@master
+        with:
+          cmd: yq -i '.model.input.download_url = strenv(SOURCE_URL)' schematic_config.yml
+        
+      - name: Commit files
+        run: |
+          git config user.email "gray-foundation-service@sagebase.org"
+          git config user.name "gf-dcc-service"
+          git commit -m "Update model source in config" -a
+    
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          branch: ${{ github.ref }}
+          github_token: ${{ secrets.SERVICE_TOKEN }}
