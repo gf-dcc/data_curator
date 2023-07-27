@@ -6,7 +6,7 @@
       {"display_name": "scRNA-seq Level 2 (Aligned Reads Data)", "schema_name": "ScRNA-seqLevel2", "type": "file"},
       {"display_name": "scRNA-seq Level 3 (Summarized Expression Data)", "schema_name": "ScRNA-seqLevel3", "type": "file"},
       {"display_name": "scRNA-seq Level 4", "schema_name": "ScRNA-seqLevel4", "type": "file"},
-      {"display_name": "Cohort Core", "schema_name": "CohortCore", "type": "clinical"},
+      {"display_name": "Cohort Core", "schema_name": "CohortCoreTemplate", "type": "clinical"},
       {"display_name": "Cohort Core RFC", "schema_name": "Cohort Core RFC", "type": "clinical"}
   ],
   "community": "Gray Foundation",
